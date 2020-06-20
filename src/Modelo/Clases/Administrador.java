@@ -32,7 +32,7 @@ if((miAdministradorVo.getNombre().isEmpty())||(miAdministradorVo.getContrasena()
         }
         else
         {       //se valida si al usar el metodo de validacion retorna verdadero
-                if(miAdministradorDao.ConsultaValidarAdministrador(miAdministradorVo)){
+                if(miAdministradorDao.consultaValidarAdministrador(miAdministradorVo)){
                      //se asigna el Id del administrador
                     JOptionPane.showMessageDialog(null,"Bienvenido: "+miAdministradorVo.getNombre());//Muestra el mensaje de bienvenida mas el nombre de usuario  
                     return true;

@@ -27,7 +27,7 @@ public class AdministradorDao extends Conexion {
     private String consulta = null;
     private PreparedStatement ps = null;
 
-    public boolean ConsultaValidarAdministrador(AdministradorVo miAdministradorVo) {
+    public boolean consultaValidarAdministrador(AdministradorVo miAdministradorVo) {
          int idAdmi=0;
             int sw = 0;
         try {
@@ -64,4 +64,6 @@ public class AdministradorDao extends Conexion {
         }
 
     }
+    
+    
 }

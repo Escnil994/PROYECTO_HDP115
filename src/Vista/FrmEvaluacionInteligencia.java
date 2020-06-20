@@ -6,31 +6,64 @@
 package Vista;
 
 import Controlador.Coordinador;
+import Modelo.Vo.EvaluacionInteligenciaVo;
+import Modelo.Vo.PersonalVo;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author REYCOG
  */
 public class FrmEvaluacionInteligencia extends javax.swing.JFrame {
- Coordinador miCoordinador;
 
-    public void setMiCoordinador(Coordinador miCoordinador) {
-        this.miCoordinador = miCoordinador;
-    }
+    Coordinador miCoordinador;
+    private int contadorPregunta = 1;
+    private int contadorPuntaje = 0;
+    EvaluacionInteligenciaVo miEvaluacionInteligenciaVo;
+    PersonalVo miPersonalVo;
+
     /**
      * Creates new form FrmInicioSesion
      */
     public FrmEvaluacionInteligencia() {
         initComponents();
+        String[] opcionesDeEvaluacion = {"Seleccionar", "0", "1", "2", "3", "4", "5", "6"};
+        setComboBoxItems(comboBoxtDominoArriba, opcionesDeEvaluacion);
+        setComboBoxItems(comboBoxtDominoAbajo, opcionesDeEvaluacion);
+
+        txtNumeroPregunta.setText(String.valueOf(contadorPregunta));
+        cambiarPreguntaImagen(labePregunta, String.valueOf(contadorPregunta));
+        this.miEvaluacionInteligenciaVo = new EvaluacionInteligenciaVo();
     }
-   public Image getIconImage() {
+
+    public void setMiPersonalVo(PersonalVo miPersonalVo) {
+        this.miPersonalVo = miPersonalVo;
+    }
+
+    public void setMiCoordinador(Coordinador miCoordinador) {
+        this.miCoordinador = miCoordinador;
+
+    }
+
+    public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("Img/logo.png"));
         //Metodo para asignar el icono de pestaña y de la barra de tareas
 
         return retValue;
+    }
+
+    private void setComboBoxItems(JComboBox combo, String[] opciones) {
+        for (String sexo : opciones) {
+            combo.addItem(sexo); //añadimos las opciones al combobox
+        }
     }
 
     /**
@@ -42,30 +75,42 @@ public class FrmEvaluacionInteligencia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         txtNumeroPregunta = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         labelInicioAdmi1 = new javax.swing.JLabel();
-        btnIngresarAdmiLogin = new javax.swing.JButton();
-        txtDominoArriba = new javax.swing.JComboBox<>();
-        btnCancelarAdmiLogin = new javax.swing.JButton();
-        labelpregunta = new javax.swing.JLabel();
-        txtDominoAbajo = new javax.swing.JComboBox<>();
-        jLabel43 = new javax.swing.JLabel();
+        btnSiguienteEvaInt = new javax.swing.JButton();
+        comboBoxtDominoArriba = new javax.swing.JComboBox<>();
+        btnFinalizarPrueba = new javax.swing.JButton();
+        comboBoxtDominoAbajo = new javax.swing.JComboBox<>();
+        jLabel44 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        labelOpcionAbajo = new javax.swing.JLabel();
+        labelOpcionArriba = new javax.swing.JLabel();
+        btnIngresarAdmiLogin1 = new javax.swing.JButton();
+        jLabel45 = new javax.swing.JLabel();
+        labePregunta = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
         labelInicioAdmi = new javax.swing.JLabel();
         labelFondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SEPENIPSMER - INICIO SESION");
         setIconImage(getIconImage());
+        setResizable(false);
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtNumeroPregunta.setEditable(false);
         txtNumeroPregunta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel4.add(txtNumeroPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 80, 40));
+        txtNumeroPregunta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeroPreguntaActionPerformed(evt);
+            }
+        });
+        jPanel4.add(txtNumeroPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 50, 40));
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -74,84 +119,236 @@ public class FrmEvaluacionInteligencia extends javax.swing.JFrame {
         jTextArea1.setText("Analice detenidamente la imagen de los dominós y selecciona la opción que le parezca \ncorrecta en cada pregunta, procure no dejar ninguna sin seleccionar. \n\nEn cada una de las 48 pruebas hay un grupo de fichas de dominó y un espacio en \nblanco, el objetivo en este caso será calcular según la lógica qué número le corresponde a la ficha");
         jScrollPane1.setViewportView(jTextArea1);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 800, 220));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 780, 130));
 
         labelInicioAdmi1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Indicaciones ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(51, 51, 255))); // NOI18N
-        jPanel4.add(labelInicioAdmi1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1030, 310));
+        jPanel4.add(labelInicioAdmi1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 970, 200));
 
-        btnIngresarAdmiLogin.setText("Siguiente");
-        jPanel4.add(btnIngresarAdmiLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 750, 160, 40));
+        btnSiguienteEvaInt.setText("Siguiente");
+        btnSiguienteEvaInt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteEvaIntActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnSiguienteEvaInt, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 630, 160, 40));
 
-        txtDominoArriba.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "0", "1", "2", "3", "4", "5", "6" }));
-        jPanel4.add(txtDominoArriba, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, -1, -1));
+        jPanel4.add(comboBoxtDominoArriba, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 140, -1));
 
-        btnCancelarAdmiLogin.setText("Finalizar evaluación");
-        jPanel4.add(btnCancelarAdmiLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 750, 160, 40));
+        btnFinalizarPrueba.setText("Finalizar evaluación");
+        btnFinalizarPrueba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarPruebaActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnFinalizarPrueba, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 630, 160, 40));
 
-        labelpregunta.setBackground(new java.awt.Color(0, 0, 0));
-        labelpregunta.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        labelpregunta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Inteligencia/1.PNG"))); // NOI18N
-        jPanel4.add(labelpregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 510, -1, -1));
+        jPanel4.add(comboBoxtDominoAbajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 140, -1));
 
-        txtDominoAbajo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "0", "1", "2", "3", "4", "5", "6" }));
-        jPanel4.add(txtDominoAbajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 620, -1, -1));
-
-        jLabel43.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel43.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel43.setText("Seleccione el domino:");
-        jPanel4.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, -1, -1));
+        jLabel44.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel44.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel44.setText("Seleccione el domino de arriba:");
+        jPanel4.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, -1, -1));
 
         jLabel42.setBackground(new java.awt.Color(0, 0, 0));
         jLabel42.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel42.setText("Prueba:");
-        jPanel4.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, -1, -1));
+        jLabel42.setText("N° Prueba:");
+        jPanel4.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+
+        labelOpcionAbajo.setBackground(new java.awt.Color(0, 0, 0));
+        labelOpcionAbajo.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        labelOpcionAbajo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Inteligencia/Opciones/Op0.PNG"))); // NOI18N
+
+        labelOpcionArriba.setBackground(new java.awt.Color(0, 0, 0));
+        labelOpcionArriba.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        labelOpcionArriba.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Inteligencia/Opciones/Op0.PNG"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelOpcionAbajo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelOpcionArriba, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(labelOpcionArriba)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelOpcionAbajo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+
+        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 360, 150, 210));
+
+        btnIngresarAdmiLogin1.setText("Asignar");
+        btnIngresarAdmiLogin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarAdmiLogin1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnIngresarAdmiLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 270, 160, 40));
+
+        jLabel45.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel45.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel45.setText("Seleccione el domino de abajo:");
+        jPanel4.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
+
+        labePregunta.setBackground(new java.awt.Color(0, 0, 0));
+        labePregunta.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        labePregunta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Inteligencia/1.PNG"))); // NOI18N
+        jPanel4.add(labePregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, -1));
+
+        jLabel43.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel43.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel43.setText("Domino de respuesta:");
+        jPanel4.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, -1, -1));
 
         labelInicioAdmi.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Evaluación de inteligencia ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(51, 51, 255))); // NOI18N
-        jPanel4.add(labelInicioAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 1030, 470));
+        jPanel4.add(labelInicioAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 970, 470));
 
-        labelFondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/fondoPantalla.png"))); // NOI18N
+        labelFondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/fondoPantalla2.png"))); // NOI18N
         labelFondoPantalla.setMaximumSize(new java.awt.Dimension(500, 500));
         labelFondoPantalla.setMinimumSize(new java.awt.Dimension(500, 500));
         labelFondoPantalla.setName(""); // NOI18N
-        jPanel4.add(labelFondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -50, 1080, 940));
-
-        jScrollPane2.setViewportView(jPanel4);
+        jPanel4.add(labelFondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 700));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1070, Short.MAX_VALUE)
+            .addGap(0, 990, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
+            .addGap(0, 700, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtNumeroPreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroPreguntaActionPerformed
+
+    }//GEN-LAST:event_txtNumeroPreguntaActionPerformed
+
+    private void btnSiguienteEvaIntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteEvaIntActionPerformed
+        if (contadorPregunta <= miCoordinador.relizarconsultarTotalPreguntas()) {
+            String respuesta = null; //Estar formada por "domino arriba -  domino abajo"
+            respuesta = comboBoxtDominoArriba.getSelectedItem().toString() + "-" + comboBoxtDominoAbajo.getSelectedItem().toString();
+            miEvaluacionInteligenciaVo.setIdPregunta(contadorPregunta);
+            miEvaluacionInteligenciaVo.setRespuesta(respuesta);
+
+            if (comboBoxtDominoArriba.getSelectedItem().toString() == "Seleccionar" || comboBoxtDominoAbajo.getSelectedItem().toString() == "Seleccionar") {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un numero para formar el domino (Arriba) y (Abajo)");
+            } else if (miCoordinador.realizarConsultaCuestionaEvaluacion(miEvaluacionInteligenciaVo)) {
+                contadorPregunta = contadorPregunta + 1;
+                contadorPuntaje = contadorPuntaje + 1;
+                txtNumeroPregunta.setText(String.valueOf(contadorPregunta));
+                miEvaluacionInteligenciaVo.setPuntaje(contadorPuntaje);
+                cambiarPreguntaImagen(labePregunta, String.valueOf(contadorPregunta));
+                JOptionPane.showMessageDialog(null, "Respuesta correcta / Puntaje: " + contadorPuntaje);
+            } else {
+                contadorPregunta = contadorPregunta + 1;
+                contadorPuntaje = contadorPuntaje;
+                txtNumeroPregunta.setText(String.valueOf(contadorPregunta));
+                cambiarPreguntaImagen(labePregunta, String.valueOf(contadorPregunta));
+                JOptionPane.showMessageDialog(null, "Respuesta incorrecta / Puntaje: " + contadorPuntaje);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "La prueba a finalizado, por favor presione finalizar evaluacion");
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSiguienteEvaIntActionPerformed
+    public String obtenerFecha() {
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("YYYY/MM/dd");
+        LocalDate fechaactual = LocalDate.now();
+        return fechaactual.toString();
+
+    }
+    private void btnFinalizarPruebaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarPruebaActionPerformed
+        setMiPersonalVo(miCoordinador.getMiCorPersonalVo());
+        miEvaluacionInteligenciaVo.setFechaRealizacion(obtenerFecha());
+        if (contadorPregunta > miCoordinador.relizarconsultarTotalPreguntas()) {
+            if (miCoordinador.realizarRegistrarEvaluacionIntBd(miEvaluacionInteligenciaVo, miPersonalVo.getIdPersonal())) {
+                JOptionPane.showMessageDialog(null, "Evaluacion registrada");
+                miCoordinador.cerrarFmrEvaluacionInt();
+                miCoordinador.mostrarFmrMenuEvaluacion();
+                contadorPregunta = 1;
+                contadorPuntaje = 0;
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Fallo al registrar evaluacion");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede finalizar la evaluacion, hasta responder todo el cuestionario");
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFinalizarPruebaActionPerformed
+
+    private void btnIngresarAdmiLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarAdmiLogin1ActionPerformed
+
+        cambiarArribaImagenNumeroDomino(labelOpcionAbajo, comboBoxtDominoAbajo.getSelectedItem().toString());
+        cambiarAbajoImagenNumeroDomino(labelOpcionArriba, comboBoxtDominoArriba.getSelectedItem().toString());
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIngresarAdmiLogin1ActionPerformed
+    public void cambiarPreguntaImagen(JLabel labelImagen, String numeroPreg) {
+
+        labelImagen.setIcon(new ImageIcon(ClassLoader.getSystemResource("Img/Inteligencia/" + numeroPreg + ".png")));
+
+    }
+
+    public void cambiarArribaImagenNumeroDomino(JLabel labelImagen, String numeroOpcion) {
+        if (numeroOpcion == "Seleccionar") {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un numero para formar el domino (Arriba)");
+        } else {
+            labelImagen.setIcon(new ImageIcon(ClassLoader.getSystemResource("Img/Inteligencia/Opciones/Op" + numeroOpcion + ".png")));
+        }
+    }
+
+    public void cambiarAbajoImagenNumeroDomino(JLabel labelImagen, String numeroOpcion) {
+        if (numeroOpcion == "Seleccionar") {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un numero para formar el domino (Abajo");
+        } else {
+            labelImagen.setIcon(new ImageIcon(ClassLoader.getSystemResource("Img/Inteligencia/Opciones/Op" + numeroOpcion + ".png")));
+        }
+    }
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelarAdmiLogin;
-    private javax.swing.JButton btnIngresarAdmiLogin;
+    private javax.swing.JButton btnFinalizarPrueba;
+    private javax.swing.JButton btnIngresarAdmiLogin1;
+    private javax.swing.JButton btnSiguienteEvaInt;
+    private javax.swing.JComboBox<String> comboBoxtDominoAbajo;
+    private javax.swing.JComboBox<String> comboBoxtDominoArriba;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel labePregunta;
     private javax.swing.JLabel labelFondoPantalla;
     private javax.swing.JLabel labelInicioAdmi;
     private javax.swing.JLabel labelInicioAdmi1;
-    private javax.swing.JLabel labelpregunta;
-    private javax.swing.JComboBox<String> txtDominoAbajo;
-    private javax.swing.JComboBox<String> txtDominoArriba;
+    private javax.swing.JLabel labelOpcionAbajo;
+    private javax.swing.JLabel labelOpcionArriba;
     private javax.swing.JTextField txtNumeroPregunta;
     // End of variables declaration//GEN-END:variables
 }

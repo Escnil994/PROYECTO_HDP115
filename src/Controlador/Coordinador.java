@@ -10,6 +10,7 @@ import Modelo.Dao.PersonalDao;
 import Modelo.Vo.*;
 import Vista.*;
 import java.sql.SQLException;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 
 /**
@@ -29,13 +30,39 @@ public class Coordinador {
     AdministradorVo miCorAdministradorVo;
     PersonalVo miCorPersonalVo;
 
-    
-
-   
     //------------Metodos-----------------------------
+    
+    public void realizarvalidarEliminarPersonalBd(int idPersonal) {
+    miPersonal.validarEliminarPersonalBd(idPersonal);
+    }
+    
+    public void realizaValidarEliminarEvaluacionIntBd(int idEvaluacion) {
+     miEvaluacionInteligencia.validarEliminarEvaluacionIntBd(idEvaluacion);
+    }
+    public int relizarconsultarTotalPreguntas() {
+        return miEvaluacionInteligencia.consultarTotalPreguntas();
+    }
+    public boolean cargarConsultaPersonalEvaluacion( JTable miTableEvaluacionBusquedad) {
+        return miEvaluacionInteligencia.validarConsultaEvaluacionesPersonalConsultado(miTableEvaluacionBusquedad);
+    }
+
+    public boolean cargarBusquedaIdPersonalEvaluacion(int idPersonal, JTable miTableEvaluacionBusquedad) {
+        return miEvaluacionInteligencia.validarBusquedaIdPersonalConsultado(idPersonal, miTableEvaluacionBusquedad);
+    }
+
+    public boolean realizarRegistrarEvaluacionIntBd(EvaluacionInteligenciaVo miEvaluacionInteligenciaVo, int idPersonal) {
+        return miEvaluacionInteligencia.registrarEvaluacionIntBd(miEvaluacionInteligenciaVo, idPersonal);
+    }
+
+    public boolean realizarConsultaCuestionaEvaluacion(EvaluacionInteligenciaVo miEvaluacionInteligenciaVo) {
+        return miEvaluacionInteligencia.consultaCuestionaEvaluacion(miEvaluacionInteligenciaVo);
+
+    }
+
     public boolean realizarIngresoComoAdmi(AdministradorVo miAdministradorVo) throws SQLException {
         return miAdministrador.validarIngresarComoAdmi(miAdministradorVo);
     }
+
     public boolean realizarIngresoComoPersonal(PersonalVo miPersonalVo) throws SQLException {
         return miPersonal.validarIngresoComoPersonal(miPersonalVo);
     }
@@ -43,8 +70,9 @@ public class Coordinador {
     public boolean realizarRegistrarPersonal(PersonalVo miPersonalVo, int idAdmi, String fechaActual) {
         return miPersonal.validarRegistrarPersonal(miPersonalVo, idAdmi, fechaActual);
     }
-    public boolean realizarActualizarPersonal(PersonalVo miPersonalVo, String fechaActual) {
-        return miPersonal.validarActualizarPersonal(miPersonalVo,fechaActual);
+
+    public boolean realizarActualizarPersonal(PersonalVo miPersonalVo, int duiSelec, String fechaActual) {
+        return miPersonal.validarActualizarPersonal(miPersonalVo, duiSelec, fechaActual);
     }
 
     public boolean cargarBusquedaNombresPersonal(PersonalVo miPersonalVo, JTable miTablePersonalBusquedad) {
@@ -54,15 +82,22 @@ public class Coordinador {
     public boolean cargarBusquedaIdPersonal(PersonalVo miPersonalVo, JTable miTablePersonalBusquedad) {
         return miPersonal.validarBusquedaIdPersonalConsultado(miPersonalVo, miTablePersonalBusquedad);
     }
+
     //-------------------Control de vistas------------------------------------
-      public void mostrarFmrMenuEvaluacion() {
+    public void mostrarFmrMenuEvaluacion() {
         this.miFrmMenuEvaluacion.setVisible(true);
     }
-      public void cerrarFmrMenuEvaluacion() {
+
+    public void cerrarFmrMenuEvaluacion() {
         this.miFrmMenuEvaluacion.setVisible(false);
     }
+
     public void mostrarFmrEvaluacionInt() {
         this.miFrmEvaluacionInt.setVisible(true);
+    }
+
+    public void cerrarFmrEvaluacionInt() {
+        this.miFrmEvaluacionInt.setVisible(false);
     }
 
     public void mostrarFmrInicioSesion() {
@@ -118,7 +153,8 @@ public class Coordinador {
     public void setMiCorAdministradorVo(AdministradorVo miAdministradorVo) {
         this.miCorAdministradorVo = miAdministradorVo;
     }
-     public PersonalVo getMiCorPersonalVo() {
+
+    public PersonalVo getMiCorPersonalVo() {
         return miCorPersonalVo;
     }
 

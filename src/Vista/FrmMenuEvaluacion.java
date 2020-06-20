@@ -23,6 +23,7 @@ public class FrmMenuEvaluacion extends javax.swing.JFrame {
      */
     public FrmMenuEvaluacion() {
         initComponents();
+        this.setResizable(false);
     }
 
     public void setMiCoordinador(Coordinador miCoordinador) {
@@ -46,7 +47,6 @@ public class FrmMenuEvaluacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         btnEnviarEvaluaci = new javax.swing.JButton();
         checkBoxInteligencia = new javax.swing.JCheckBox();
@@ -65,75 +65,149 @@ public class FrmMenuEvaluacion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SEPENIPSMER - INICIO SESION");
         setIconImage(getIconImage());
+        setResizable(false);
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnEnviarEvaluaci.setText("Ingresar a la evaluación");
-        jPanel4.add(btnEnviarEvaluaci, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 650, 190, 40));
+        btnEnviarEvaluaci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarEvaluaciActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnEnviarEvaluaci, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 530, 190, 40));
 
         checkBoxInteligencia.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         checkBoxInteligencia.setText("Realizada");
-        jPanel4.add(checkBoxInteligencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, -1));
+        jPanel4.add(checkBoxInteligencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, -1, -1));
 
         btnCancelarEvalu.setText("Cancelar");
-        jPanel4.add(btnCancelarEvalu, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 650, 160, 40));
+        btnCancelarEvalu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarEvaluActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnCancelarEvalu, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 530, 160, 40));
 
         btnRealizarInteligenciaEval.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnRealizarInteligenciaEval.setText("Realizar evaluación de inteligencia");
-        jPanel4.add(btnRealizarInteligenciaEval, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 460, 40));
+        btnRealizarInteligenciaEval.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRealizarInteligenciaEvalActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnRealizarInteligenciaEval, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 460, 40));
 
         btnRealizarProyectiEval.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnRealizarProyectiEval.setText("Realizar evaluación de proyectividad");
-        jPanel4.add(btnRealizarProyectiEval, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 460, 40));
+        btnRealizarProyectiEval.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRealizarProyectiEvalActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnRealizarProyectiEval, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 460, 40));
 
         checkBoxPersonalidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         checkBoxPersonalidad.setText("Realizada");
-        jPanel4.add(checkBoxPersonalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, -1, -1));
+        jPanel4.add(checkBoxPersonalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
 
         checkBoxProyectiva.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         checkBoxProyectiva.setText("Realizada");
-        jPanel4.add(checkBoxProyectiva, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, -1, -1));
+        jPanel4.add(checkBoxProyectiva, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, -1, -1));
 
         btnIngresarAdmiLogin2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnIngresarAdmiLogin2.setText("Realizar evaluación de personalidad");
-        jPanel4.add(btnIngresarAdmiLogin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 460, 40));
+        btnIngresarAdmiLogin2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarAdmiLogin2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnIngresarAdmiLogin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 460, 40));
 
         checkBoxEmocional.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         checkBoxEmocional.setText("Realizada");
-        jPanel4.add(checkBoxEmocional, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, -1, -1));
+        jPanel4.add(checkBoxEmocional, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, -1, -1));
 
         btnSalir.setText("Salir");
-        jPanel4.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 650, 160, 40));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 530, 160, 40));
 
         btnRealizarEmocionalEval.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnRealizarEmocionalEval.setText("Realizar evaluación de inteligencia emocionalç");
-        jPanel4.add(btnRealizarEmocionalEval, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 480, 460, 40));
+        btnRealizarEmocionalEval.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRealizarEmocionalEvalActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnRealizarEmocionalEval, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 460, 40));
 
         labelInicioAdmi.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Menú de evaluaciones psicológicas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(51, 51, 255))); // NOI18N
-        jPanel4.add(labelInicioAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1030, 820));
+        jPanel4.add(labelInicioAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 960, 660));
 
-        labelFondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/fondoPantalla.png"))); // NOI18N
+        labelFondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/fondoPantalla2.png"))); // NOI18N
         labelFondoPantalla.setMaximumSize(new java.awt.Dimension(500, 500));
         labelFondoPantalla.setMinimumSize(new java.awt.Dimension(500, 500));
         labelFondoPantalla.setName(""); // NOI18N
-        jPanel4.add(labelFondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -50, 1080, 940));
-
-        jScrollPane1.setViewportView(jPanel4);
+        jPanel4.add(labelFondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 690));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1070, Short.MAX_VALUE)
+            .addGap(0, 990, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
+            .addGap(0, 683, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEnviarEvaluaciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarEvaluaciActionPerformed
+
+    }//GEN-LAST:event_btnEnviarEvaluaciActionPerformed
+
+    private void btnCancelarEvaluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEvaluActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarEvaluActionPerformed
+
+    private void btnRealizarInteligenciaEvalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarInteligenciaEvalActionPerformed
+    miCoordinador.mostrarFmrEvaluacionInt();
+    miCoordinador.cerrarFmrMenuEvaluacion();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRealizarInteligenciaEvalActionPerformed
+
+    private void btnRealizarProyectiEvalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarProyectiEvalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRealizarProyectiEvalActionPerformed
+
+    private void btnIngresarAdmiLogin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarAdmiLogin2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIngresarAdmiLogin2ActionPerformed
+
+    private void btnRealizarEmocionalEvalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarEmocionalEvalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRealizarEmocionalEvalActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        miCoordinador.cerrarFmrMenuEvaluacion();
+        miCoordinador.mostrarFmrInicioSesion();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,7 +226,6 @@ public class FrmMenuEvaluacion extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkBoxPersonalidad;
     private javax.swing.JCheckBox checkBoxProyectiva;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelFondoPantalla;
     private javax.swing.JLabel labelInicioAdmi;
     // End of variables declaration//GEN-END:variables

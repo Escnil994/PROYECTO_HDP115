@@ -14,8 +14,8 @@ public class Conexion {
  
     String database = "dBSepenipsmer";
     String URL_bd = "jdbc:sqlserver://localhost:1433;databaseName=" + database;
-    String usuario = "ues";
-    String contraseña = "sepe";
+    String usuario = "Escnil994";
+    String contraseña = "27431";
 
     public Connection conectar() {
         try {

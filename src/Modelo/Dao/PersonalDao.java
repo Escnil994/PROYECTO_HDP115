@@ -61,6 +61,36 @@ public class PersonalDao extends Conexion {
 
     }
 
+    public boolean consultarValidarDuiUnicoModificacionBd(int duiSelecTable, PersonalVo miPersonalVo) {
+        int sw = 0;
+        try {    //metodo para validar que el numero de Dui no este registrado a un miembro del peronal
+            consulta = "select Nombres from Personal where not Dui= ? and  Dui=?";
+            this.con = conectar();
+            prepSta = con.prepareStatement(consulta);
+            prepSta.setInt(1, duiSelecTable);
+            prepSta.setInt(2, miPersonalVo.getDui());
+            rs = prepSta.executeQuery();
+            while (rs.next()) {  //Se usa un ciclo while para determinar si hay similitud
+                if (rs.getString(1) == null) //Si es null asigna a sw=0 que indica,
+                { //que no se encontro ningun usuario con el Dui registrado ingresado anteriormente
+                    sw = 0;
+                } else {
+                    sw = 1; //Pero si no es igual a null entonces, se asigna sw=1, que indica que se enocntro un registron del personal,
+                }//con ese Dui.
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(PersonalDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
+        }
+        if (sw == 0) {
+            return true; //retorna true si, sw es igual a 0
+        } else {
+            return false;        //Se retorna false  si, sw diferente de 1
+        }
+
+    }
+
     public boolean consultarValidarDuiUnicoBd(PersonalVo PersonalVo) {
         int sw = 0;
         try {    //metodo para validar que el numero de Dui no este registrado a un miembro del peronal
@@ -98,29 +128,30 @@ public class PersonalDao extends Conexion {
             //se consulta en la tabla productos las descripciones, similares a las ingresadas
             prepSta = con.prepareStatement(consulta);
             prepSta.setInt(1, miPersonalVo.getIdPersonal());
-            rs=prepSta.executeQuery();
+            rs = prepSta.executeQuery();
             if (rs == null)//si la consulta es nula, mostrara
             {
                 System.out.print("No hay ningun registro con ese IdPersonal");
-                return rs=null;
+                return rs = null;
             } else {
                 return rs;
             }
         } catch (SQLException ex) {
             Logger.getLogger(PersonalDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex);
-            return rs=null;
-        } 
+            return rs = null;
+        }
 
     }
+
     public ResultSet consultarBusquedaNombrePersonalBd(PersonalVo miPersonalVo) {
 
         try {
             this.con = conectar();
-            consulta = "Select * from Personal where Nombres Like '%"+miPersonalVo.getNombre()+"%'";
+            consulta = "Select * from Personal where Nombres Like '%" + miPersonalVo.getNombre() + "%'";
             //se consulta en la tabla productos las descripciones, similares a las ingresadas
             prepSta = con.prepareStatement(consulta);
-            rs=prepSta.executeQuery();
+            rs = prepSta.executeQuery();
             if (rs == null)//si la consulta es nula, mostrara
             {
                 System.out.print("No hay ningun registro con ese Nombre");
@@ -132,10 +163,30 @@ public class PersonalDao extends Conexion {
             Logger.getLogger(PersonalDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex);
             return rs = null;
-        } 
+        }
 
     }
     
+     public boolean eliminarPersonalBd(int idPersonal) {
+
+        try {
+            this.con = conectar(); //se instancia la conexion
+
+            consulta = "DELETE FROM Personal WHERE IdPersonal = ?";
+            prepSta = con.prepareStatement(consulta);
+            prepSta.setInt(1, idPersonal);
+            prepSta.executeUpdate();
+            con.close();
+            return true;
+        } catch (SQLException ex) {
+            ;
+            Logger.getLogger(PersonalDao.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "error" + ex);
+            return false;
+        }
+
+    }
+
     public boolean actualizarPersonalBd(PersonalVo miPersonalVo) {
 
         try {
@@ -167,8 +218,9 @@ public class PersonalDao extends Conexion {
         }
 
     }
+
     public boolean consultaValidarIngresoPersonal(PersonalVo miPersonalVo) {
-            int sw = 0;
+        int sw = 0;
         try {
             consulta = "select * from Personal where IdPersonal= ? and Dui= ? ";
 //Se consulta si el nombte y contraseña del
@@ -186,19 +238,19 @@ public class PersonalDao extends Conexion {
                     sw = 0;
                 } else {
                     sw = 1; //Pero si no es igual a null entonces, se asigna sw=1, que indica que se enocntro un registro,
-                    miPersonalVo.setIdPersonal( parseInt(rs.getString("IdPersonal"))); //Asignamos el id
+                    miPersonalVo.setIdPersonal(parseInt(rs.getString("IdPersonal"))); //Asignamos el id
                     miPersonalVo.setDui(parseInt(rs.getString("Dui")));
                     miPersonalVo.setNombre(rs.getString("Nombres"));
-                     miPersonalVo.setApellido(rs.getString("Apellidos"));
-                              miPersonalVo.setSexo(rs.getString("Sexo"));
-                              miPersonalVo.setEstudio(rs.getString("Estudios"));
-                              miPersonalVo.setFechaNacimiento(rs.getString("FechaNacimiento"));
-                              miPersonalVo.setTelefono(parseInt(rs.getString("Telefono")));
-                              miPersonalVo.setCelular(parseInt(rs.getString("Celular")));
-                              miPersonalVo.setDireccion(rs.getString("Direccion"));                           
+                    miPersonalVo.setApellido(rs.getString("Apellidos"));
+                    miPersonalVo.setSexo(rs.getString("Sexo"));
+                    miPersonalVo.setEstudio(rs.getString("Estudios"));
+                    miPersonalVo.setFechaNacimiento(rs.getString("FechaNacimiento"));
+                    miPersonalVo.setTelefono(parseInt(rs.getString("Telefono")));
+                    miPersonalVo.setCelular(parseInt(rs.getString("Celular")));
+                    miPersonalVo.setDireccion(rs.getString("Direccion"));
                 }//con ese nombre de usuario y contrasña.
             }
-        con.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(AdministradorDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex);

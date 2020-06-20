@@ -21,6 +21,7 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import static jdk.nashorn.internal.objects.NativeString.trim;
 
 /**
  *
@@ -83,8 +84,15 @@ public class Personal {
         }
 
     }
-
-    public boolean validarActualizarPersonal(PersonalVo miPersonalVo, String fechaActual) {
+     public void validarEliminarPersonalBd(int idPersonal){
+     
+      if (miPersonalDao.eliminarPersonalBd(idPersonal)) {
+            JOptionPane.showMessageDialog(null, "El personal con Id: "+idPersonal+ " ha sido eliminada");
+        } else {
+             JOptionPane.showMessageDialog(null, "El personal  con Id: "+idPersonal+ ", fallo en la eliminacion");
+        }
+     }
+    public boolean validarActualizarPersonal(PersonalVo miPersonalVo,int duiSelec, String fechaActual) {
         if ((miPersonalVo.getApellido().isEmpty()) || (miPersonalVo.getNombre().isEmpty())
                 || (miPersonalVo.getCelular() == 0) || (miPersonalVo.getSexo() == "Seleccionar")
                 || (miPersonalVo.getEstudio() == "Seleccionar") || (miPersonalVo.getCorreo().isEmpty())
@@ -100,7 +108,7 @@ public class Personal {
             JOptionPane.showMessageDialog(null, "La fecha nacimiento a ingresada, no  cumple con el requisito de  edad minima del peronal: \"" + edadMinima + "\" años, "
                     + "para realizar las evaluaciones, edad ingresada: " + validarCalculoEdad(miPersonalVo.getFechaNacimiento(), fechaActual) + " años");
             return false;
-        } else if (!(miPersonalDao.consultarValidarDuiUnicoBd(miPersonalVo))) {
+        } else if (!(miPersonalDao.consultarValidarDuiUnicoModificacionBd(duiSelec,miPersonalVo))) {
             JOptionPane.showMessageDialog(null, "El numero de Dui ingresado, ya se encuentra registrado: " + miPersonalVo.getDui());
             return false;
         } else {
@@ -204,7 +212,8 @@ public class Personal {
         } else {       //se valida si al usar el metodo de validacion retorna verdadero
             if (miPersonalDao.consultaValidarIngresoPersonal(miPersonalVo)) {
                 //se asigna el Id del administrador
-                JOptionPane.showMessageDialog(null, "Bienvenido: " + miPersonalVo.getNombre());//Muestra el mensaje de bienvenida mas el nombre de usuario  
+                JOptionPane.showMessageDialog(null, "Bienvenido: " +trim(miPersonalVo.getNombre())+" "+trim(miPersonalVo.getApellido()));
+//Muestra el mensaje de bienvenida mas el nombre de usuario  
                 return true;
             } else {
                 JOptionPane.showMessageDialog(null, "ID de personal o Dui incorrectos"); //pero si la validacion retorna falso se muestra este mensaje

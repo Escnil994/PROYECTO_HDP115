@@ -13,6 +13,7 @@ public class AdministradorVo {
    private int idAdmi;
    private String nombre;
    private String contrasena;
+ 
 
     public int getIdAdmin() {
         return idAdmi;
