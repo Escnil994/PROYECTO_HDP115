@@ -52,6 +52,7 @@ public class FrmInicioSesion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -89,27 +90,12 @@ public class FrmInicioSesion extends javax.swing.JFrame {
         jPanel4.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 620, -1, -1));
 
         txtIdPersonalLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtIdPersonalLogin.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtIdPersonalLoginKeyTyped(evt);
-            }
-        });
         jPanel4.add(txtIdPersonalLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, 340, 40));
 
         txtDuiPersonalLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtDuiPersonalLogin.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDuiPersonalLoginKeyTyped(evt);
-            }
-        });
         jPanel4.add(txtDuiPersonalLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 610, 340, 40));
 
         btnIngresaEvaluPersonalLogin.setText("Ingresar a la evaluación");
-        btnIngresaEvaluPersonalLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresaEvaluPersonalLoginActionPerformed(evt);
-            }
-        });
         jPanel4.add(btnIngresaEvaluPersonalLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 760, 190, 40));
 
         txtContraLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -119,27 +105,12 @@ public class FrmInicioSesion extends javax.swing.JFrame {
         jPanel4.add(txtNombreLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 350, 40));
 
         btnCancelarPersonalLogin.setText("Cancelar");
-        btnCancelarPersonalLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarPersonalLoginActionPerformed(evt);
-            }
-        });
         jPanel4.add(btnCancelarPersonalLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 760, 160, 40));
 
         btnIngresarAdmiLogin.setText("Ingresar");
-        btnIngresarAdmiLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarAdmiLoginActionPerformed(evt);
-            }
-        });
         jPanel4.add(btnIngresarAdmiLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 160, 40));
 
         btnCancelarAdmiLogin.setText("Cancelar");
-        btnCancelarAdmiLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarAdmiLoginActionPerformed(evt);
-            }
-        });
         jPanel4.add(btnCancelarAdmiLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 160, 40));
 
         labelInicipersonal.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Iniciar sesión como personal", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(51, 51, 255))); // NOI18N
@@ -159,99 +130,22 @@ public class FrmInicioSesion extends javax.swing.JFrame {
         labelFondoPantalla.setName(""); // NOI18N
         jPanel4.add(labelFondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -50, 1080, 940));
 
+        jScrollPane2.setViewportView(jPanel4);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1070, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1070, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 860, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 860, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnIngresaEvaluPersonalLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresaEvaluPersonalLoginActionPerformed
-        if (txtIdPersonalLogin.getText().isEmpty() || txtDuiPersonalLogin.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Faltan campos de texto por llenar");
-        } else {
-            PersonalVo miPersonalVo = new PersonalVo();
-            miPersonalVo.setIdPersonal(parseInt(txtIdPersonalLogin.getText()));
-            miPersonalVo.setDui(parseInt(txtDuiPersonalLogin.getText()));
-            try {
-                if (miCoordinador.realizarIngresoComoPersonal(miPersonalVo)) {//Se valida que el usuario sea valido
-                    miCoordinador.setMiCorPersonalVo(miPersonalVo);
-                    miCoordinador.mostrarFmrMenuEvaluacion();     //se muestran y se cierran Frm
-                    miCoordinador.cerrarFrmInicioSesion();
-
-                    limpiarCamposTextLoginPersonal();
-                } else {
-                    limpiarCamposTextLoginAdmi(); //se limpia el texto
-                }
-                {
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(FrmInicioSesion.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println(ex);
-            }
-        }
-    }//GEN-LAST:event_btnIngresaEvaluPersonalLoginActionPerformed
-
-    private void btnCancelarPersonalLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPersonalLoginActionPerformed
-        limpiarCamposTextLoginPersonal();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarPersonalLoginActionPerformed
-
-    private void btnIngresarAdmiLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarAdmiLoginActionPerformed
-        AdministradorVo miAdministradorVo = new AdministradorVo();
-        miAdministradorVo.setContrasena(txtContraLogin.getText());
-        miAdministradorVo.setNombre(txtNombreLogin.getText());
-        try {
-            if (miCoordinador.realizarIngresoComoAdmi(miAdministradorVo)) {//Se valida que el usuario sea valido
-                miCoordinador.setMiCorAdministradorVo(miAdministradorVo);
-                miCoordinador.mostrarFrmMenuPrincipal();     //se muestran y se cierran Frm
-                miCoordinador.cerrarFrmInicioSesion();
-
-                limpiarCamposTextLoginAdmi();
-            } else {
-                limpiarCamposTextLoginAdmi(); //se limpia el texto
-            }
-            {
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(FrmInicioSesion.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex);
-        }
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnIngresarAdmiLoginActionPerformed
-
-    private void btnCancelarAdmiLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarAdmiLoginActionPerformed
-        limpiarCamposTextLoginAdmi();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarAdmiLoginActionPerformed
-
-    private void txtIdPersonalLoginKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdPersonalLoginKeyTyped
-        validarCaracteresNumericos(evt);
-    }//GEN-LAST:event_txtIdPersonalLoginKeyTyped
-
-    private void txtDuiPersonalLoginKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDuiPersonalLoginKeyTyped
-        validarCaracteresNumericos(evt);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDuiPersonalLoginKeyTyped
     public void validarCaracteresNumericos(java.awt.event.KeyEvent evt) {
         //Metodo para evitar la entrada de alfanumericos A-Z y caracteres especiales
         char caracter = evt.getKeyChar();//se toma el caracter digitado
@@ -290,6 +184,7 @@ public class FrmInicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelFondoPantalla;
     private javax.swing.JLabel labelInicioAdmi;
     private javax.swing.JLabel labelInicipersonal;

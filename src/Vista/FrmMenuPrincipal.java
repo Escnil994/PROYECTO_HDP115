@@ -87,6 +87,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollBar1 = new javax.swing.JScrollBar();
+        jScrollPane1 = new javax.swing.JScrollPane();
         jTabbedPaneMenuPrincipal = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         btnRegistrarPersonal = new javax.swing.JButton();
@@ -171,31 +172,16 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         DateRealizacionConsult = new com.toedter.calendar.JDateChooser();
         labelConsultarEvaluaciones = new javax.swing.JLabel();
         labelFondoPantallaConsulta = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenuCerrar = new javax.swing.JMenu();
-        jMenuItemCerrarSesion = new javax.swing.JMenuItem();
-        jMenuItemSalirSistema = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SEPENIPSMER - MENU PRINCIPAL");
         setIconImage(getIconImage());
         setResizable(false);
 
-        jTabbedPaneMenuPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPaneMenuPrincipalMouseClicked(evt);
-            }
-        });
-
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRegistrarPersonal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnRegistrarPersonal.setText("Registrar");
-        btnRegistrarPersonal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarPersonalActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnRegistrarPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 730, 150, 40));
 
         jLabel20.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -209,16 +195,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jTNombreProveedor1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jTNombreProveedor1.setText("Sexo:");
         jPanel1.add(jTNombreProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, -1));
-
-        txtApellidRegist.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(txtApellidRegist, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 260, -1));
-
-        txtDuiRegist.setBackground(new java.awt.Color(255, 255, 255));
-        txtDuiRegist.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDuiRegistKeyTyped(evt);
-            }
-        });
         jPanel1.add(txtDuiRegist, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 260, -1));
 
         jLabel32.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -228,8 +205,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jLabel37.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel37.setText("Nombres:");
         jPanel1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
-
-        txtNombreRegist.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(txtNombreRegist, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 260, -1));
 
         jLabel34.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -246,21 +221,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jLabel42.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel42.setText("Telefono:");
         jPanel1.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, -1, -1));
-
-        txtTelefonoRegist.setBackground(new java.awt.Color(255, 255, 255));
-        txtTelefonoRegist.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTelefonoRegistKeyTyped(evt);
-            }
-        });
         jPanel1.add(txtTelefonoRegist, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 260, -1));
-
-        txtCelularRegist.setBackground(new java.awt.Color(255, 255, 255));
-        txtCelularRegist.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCelularRegistKeyTyped(evt);
-            }
-        });
         jPanel1.add(txtCelularRegist, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 260, -1));
 
         jLabel43.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -273,8 +234,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         dateNacimientoRegist.setFocusable(false);
         dateNacimientoRegist.setMinSelectableDate(new java.util.Date(-62135744325000L));
         jPanel1.add(dateNacimientoRegist, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 260, -1));
-        dateNacimientoRegist.getAccessibleContext().setAccessibleName("");
-        dateNacimientoRegist.getAccessibleContext().setAccessibleDescription("");
 
         jLabel59.setBackground(new java.awt.Color(0, 0, 0));
         jLabel59.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -290,19 +249,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         btnCancelRegist.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnCancelRegist.setText("Cancelar");
-        btnCancelRegist.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelRegistActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnCancelRegist, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 730, 150, 40));
-
-        txtCorreoRegist.setBackground(new java.awt.Color(255, 255, 255));
-        txtCorreoRegist.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCorreoRegistKeyTyped(evt);
-            }
-        });
         jPanel1.add(txtCorreoRegist, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, 260, -1));
 
         labelRegistroPersonal.setBackground(new java.awt.Color(204, 204, 204));
@@ -336,16 +283,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jTNombreProveedor.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jTNombreProveedor.setText("Sexo:");
         jPanel4.add(jTNombreProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 490, -1, -1));
-
-        txtApellidMod.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.add(txtApellidMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 590, 230, -1));
-
-        txtDuiMod.setBackground(new java.awt.Color(255, 255, 255));
-        txtDuiMod.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDuiModKeyTyped(evt);
-            }
-        });
         jPanel4.add(txtDuiMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 490, 230, -1));
 
         jLabel25.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -353,37 +291,19 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jPanel4.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 640, -1, -1));
 
         btnModificar.setText("Modificar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
         jPanel4.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 760, 160, 40));
 
         btnDesbloquearCampos.setText("Desbloquear Campos");
-        btnDesbloquearCampos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDesbloquearCamposActionPerformed(evt);
-            }
-        });
         jPanel4.add(btnDesbloquearCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 760, 190, 40));
 
         jLabel36.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel36.setText("Nombres:");
         jPanel4.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, -1, -1));
-
-        txtNombreMod.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.add(txtNombreMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 230, -1));
 
         jLabel26.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel26.setText("Estudios:");
         jPanel4.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 700, -1, -1));
-
-        txtNombreBusquedad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNombreBusquedadKeyPressed(evt);
-            }
-        });
         jPanel4.add(txtNombreBusquedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 220, -1));
 
         tablePersonalBusquedad.setModel(new javax.swing.table.DefaultTableModel(
@@ -396,11 +316,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         ));
         tablePersonalBusquedad.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tablePersonalBusquedad.getTableHeader().setReorderingAllowed(false);
-        tablePersonalBusquedad.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablePersonalBusquedadMouseClicked(evt);
-            }
-        });
         jScrollPane3.setViewportView(tablePersonalBusquedad);
 
         jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 980, 250));
@@ -409,31 +324,12 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         comboBoxSexoMod.setEditable(true);
         comboBoxSexoMod.setEnabled(false);
         jPanel4.add(comboBoxSexoMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, 260, -1));
-
-        txIdPersonalBusquedad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txIdPersonalBusquedadKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txIdPersonalBusquedadKeyTyped(evt);
-            }
-        });
         jPanel4.add(txIdPersonalBusquedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 220, -1));
 
         btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
         jPanel4.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 760, 160, 40));
 
         btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
         jPanel4.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 760, 160, 40));
 
         jLabel27.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -445,27 +341,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jPanel4.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 550, -1, -1));
 
         btnCancelarBusquedad.setText("Cancelar");
-        btnCancelarBusquedad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarBusquedadActionPerformed(evt);
-            }
-        });
         jPanel4.add(btnCancelarBusquedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, 160, 40));
-
-        txtTelefonoMod.setBackground(new java.awt.Color(255, 255, 255));
-        txtTelefonoMod.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTelefonoModKeyTyped(evt);
-            }
-        });
         jPanel4.add(txtTelefonoMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 540, 260, -1));
-
-        txtCelularMod.setBackground(new java.awt.Color(255, 255, 255));
-        txtCelularMod.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCelularModKeyTyped(evt);
-            }
-        });
         jPanel4.add(txtCelularMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 590, 260, -1));
 
         jLabel29.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -490,13 +367,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         txtFechaActualMod.setEditable(false);
         jPanel4.add(txtFechaActualMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 110, -1));
-
-        txtCorreoMod.setBackground(new java.awt.Color(255, 255, 255));
-        txtCorreoMod.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCorreoModKeyTyped(evt);
-            }
-        });
         jPanel4.add(txtCorreoMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 640, 260, -1));
 
         labelModificarDatoss.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modificar datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(51, 51, 255))); // NOI18N
@@ -539,19 +409,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jPanel6.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 990, 260));
 
         btnBuscarConsult.setText("Buscar");
-        btnBuscarConsult.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarConsultActionPerformed(evt);
-            }
-        });
         jPanel6.add(btnBuscarConsult, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 150, 40));
 
         btnEliminarEvaluConult.setText("Eliminar evaluación");
-        btnEliminarEvaluConult.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarEvaluConultActionPerformed(evt);
-            }
-        });
         jPanel6.add(btnEliminarEvaluConult, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, 210, 40));
 
         jLabel61.setBackground(new java.awt.Color(0, 0, 0));
@@ -560,11 +420,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jPanel6.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, 50, -1));
 
         txtFechaActualConsult.setEditable(false);
-        txtFechaActualConsult.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtFechaActualConsultKeyPressed(evt);
-            }
-        });
         jPanel6.add(txtFechaActualConsult, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 110, -1));
 
         jLabel45.setBackground(new java.awt.Color(0, 0, 0));
@@ -579,18 +434,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jPanel6.add(txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 534, 100, 30));
 
         btnImprimirEvaluacionConsulta.setText("Imprimir reporte de evaluación");
-        btnImprimirEvaluacionConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImprimirEvaluacionConsultaActionPerformed(evt);
-            }
-        });
         jPanel6.add(btnImprimirEvaluacionConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, 210, 40));
-
-        txIdPersonalConsult.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txIdPersonalConsultKeyPressed(evt);
-            }
-        });
         jPanel6.add(txIdPersonalConsult, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 230, -1));
 
         jLabel39.setBackground(new java.awt.Color(0, 0, 0));
@@ -622,298 +466,33 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         jTabbedPaneMenuPrincipal.addTab("Consultar", jPanel6);
 
-        jMenuCerrar.setText("Opciones");
-
-        jMenuItemCerrarSesion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItemCerrarSesion.setText("Cerrar Sesion");
-        jMenuItemCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCerrarSesionActionPerformed(evt);
-            }
-        });
-        jMenuCerrar.add(jMenuItemCerrarSesion);
-
-        jMenuItemSalirSistema.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItemSalirSistema.setText("Salir");
-        jMenuItemSalirSistema.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemSalirSistemaActionPerformed(evt);
-            }
-        });
-        jMenuCerrar.add(jMenuItemSalirSistema);
-
-        jMenuBar1.add(jMenuCerrar);
-
-        setJMenuBar(jMenuBar1);
+        jScrollPane1.setViewportView(jTabbedPaneMenuPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1060, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1060, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
-        //Metodo para cerrar el sesion
-        if (JOptionPane.showConfirmDialog(rootPane, "Estás seguro de cerrar sesion.", "Cerrar sesion", 1) == 0) {
-            miCoordinador.cerrarFrmMenuPrincipal();
-            miCoordinador.mostrarFmrInicioSesion();
-
-        }
-
-    }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
-
-    private void jMenuItemSalirSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirSistemaActionPerformed
-        //Metodo para cerrar el sistema
-        if (JOptionPane.showConfirmDialog(rootPane, "Estás seguro de cerrar el sistema.", "Cerrar sistema", 1) == 0) {
-            System.exit(0);
-        }
-
-    }//GEN-LAST:event_jMenuItemSalirSistemaActionPerformed
-
 
     private void jCalendar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCalendar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCalendar1ActionPerformed
 
-    private void btnImprimirEvaluacionConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirEvaluacionConsultaActionPerformed
 
-    }//GEN-LAST:event_btnImprimirEvaluacionConsultaActionPerformed
-
-    private void btnBuscarConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConsultActionPerformed
-
-    }//GEN-LAST:event_btnBuscarConsultActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        limpiarCamposTextModificar();
-        desblockOblockCamposMod(false);
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-
-    private void btnDesbloquearCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesbloquearCamposActionPerformed
-        //Asignst campos de la tabla busquedad a los campos de texto de la seccion de modificar
-        numFila = tablePersonalBusquedad.getSelectedRow();
-        if (numFila < 0) {
-            JOptionPane.showMessageDialog(null, "Seleccione por favor un registro de la tabla de busquedad");
-        } else {
-            try {
-
-                txtDuiMod.setText(tablePersonalBusquedad.getValueAt(numFila, 2).toString());
-                txtNombreMod.setText(tablePersonalBusquedad.getValueAt(numFila, 3).toString());
-                txtApellidMod.setText(tablePersonalBusquedad.getValueAt(numFila, 4).toString());
-                comboBoxSexoMod.setSelectedItem(tablePersonalBusquedad.getValueAt(numFila, 5).toString());
-                comboBoxEstudiosMod.setSelectedItem(tablePersonalBusquedad.getValueAt(numFila, 6).toString());
-                txtTelefonoMod.setText(tablePersonalBusquedad.getValueAt(numFila, 8).toString());
-                txtCelularMod.setText(tablePersonalBusquedad.getValueAt(numFila, 9).toString());
-                txtCorreoMod.setText(tablePersonalBusquedad.getValueAt(numFila, 10).toString());
-                txtDireccionMod.setText(tablePersonalBusquedad.getValueAt(numFila, 11).toString());
-                String formato = dateNacimientoRegist.getDateFormatString();
-                java.util.Date date = dateNacimientoMod.getDate();
-                SimpleDateFormat sdf = new SimpleDateFormat(formato);
-                dateNacimientoMod.setDate(sdf.parse(tablePersonalBusquedad.getValueAt(numFila, 7).toString()));
-                desblockOblockCamposMod(true);
-            } catch (ParseException ex) {
-                Logger.getLogger(FrmMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_btnDesbloquearCamposActionPerformed
-
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        numFila = tablePersonalBusquedad.getSelectedRow();
-        if (numFila < 0) {
-            JOptionPane.showMessageDialog(null, "Seleccione por favor un registro de la tabla de busquedad");
-        } else {
-            if (txtNombreMod.getText().isEmpty() || txtNombreMod.getText().isEmpty()
-                    || txtDireccionMod.getText().isEmpty() || comboBoxSexoMod.getSelectedItem().toString() == "Seleccionar"
-                    || comboBoxEstudiosMod.getSelectedItem().toString() == "Seleccionar"
-                    || txtCorreoMod.getText().isEmpty() || txtDuiMod.getText().isEmpty()
-                    || txtTelefonoMod.getText().isEmpty() || txtCelularMod.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Faltan campos de texto por llenar");
-            } else {
-                miPersonalVo.setIdPersonal(parseInt(tablePersonalBusquedad.getValueAt(numFila, 0).toString()));
-                miPersonalVo.setNombre(txtNombreMod.getText());
-                miPersonalVo.setApellido(txtApellidMod.getText());
-                miPersonalVo.setDireccion(txtDireccionMod.getText());
-                miPersonalVo.setSexo(comboBoxSexoMod.getSelectedItem().toString());
-                miPersonalVo.setEstudio(comboBoxEstudiosMod.getSelectedItem().toString());
-                miPersonalVo.setCorreo(txtCorreoMod.getText());
-                miPersonalVo.setDui(parseInt(txtDuiMod.getText()));
-                miPersonalVo.setTelefono(parseInt(txtTelefonoMod.getText()));
-                miPersonalVo.setCelular(parseInt(txtCelularMod.getText()));
-
-                //jDateChooser el nombre la variable  del componente jdatecgooser
-                try {
-
-                    String formato = dateNacimientoMod.getDateFormatString();
-                    java.util.Date date = dateNacimientoMod.getDate();
-                    SimpleDateFormat sdf = new SimpleDateFormat(formato);
-                    miPersonalVo.setFechaNacimiento(String.valueOf(sdf.format(date)));
-                    if (miCoordinador.realizarActualizarPersonal(miPersonalVo, txtFechaActualMod.getText())) {
-                        JOptionPane.showMessageDialog(null, "Personal modificado exitosamente");
-                        limpiarCamposTextModificar();
-                        desblockOblockCamposMod(false);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Verifique la informacion ingresada en los campos de texto");
-                    }
-
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Ingrese una fecha valida, en formato yyyy-MM-dd");
-
-                }
-                JOptionPane.showMessageDialog(null, "Convertir " + miPersonalVo.getFechaNacimiento());
-                //textFecha nombre de la variable del componenten jtextfiel
-
-            }
-        }
-    }//GEN-LAST:event_btnModificarActionPerformed
-
-
-    private void txtDuiModKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDuiModKeyTyped
-        validarCaracteresNumericos(evt);
-    }//GEN-LAST:event_txtDuiModKeyTyped
     private void mostrarPersonaTablaBusquedad() {
         miPersonalVo.setNombre("");//Cancela las busqueda y muestra todos los registros del peronal
         miCoordinador.cargarBusquedaNombresPersonal(miPersonalVo, tablePersonalBusquedad);    //para mostrar todos los registros 
-    }
-    private void btnRegistrarPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPersonalActionPerformed
-        if (txtNombreRegist.getText().isEmpty() || txtNombreRegist.getText().isEmpty()
-                || txtDireccionRegist.getText().isEmpty() || comboBoxSexoRegist.getSelectedItem().toString() == "Seleccionar"
-                || comboBoxEstudiosRegist.getSelectedItem().toString() == "Seleccionar"
-                || txtCorreoRegist.getText().isEmpty() || txtDuiRegist.getText().isEmpty()
-                || txtTelefonoRegist.getText().isEmpty() || txtCelularRegist.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Faltan campos de texto por llenar");
-        } else {
-
-            miPersonalVo.setNombre(txtNombreRegist.getText());
-            miPersonalVo.setApellido(txtApellidRegist.getText());
-            miPersonalVo.setDireccion(txtDireccionRegist.getText());
-            miPersonalVo.setSexo(comboBoxSexoRegist.getSelectedItem().toString());
-            miPersonalVo.setEstudio(comboBoxEstudiosRegist.getSelectedItem().toString());
-            miPersonalVo.setCorreo(txtCorreoRegist.getText());
-            miPersonalVo.setDui(parseInt(txtDuiRegist.getText()));
-            miPersonalVo.setTelefono(parseInt(txtTelefonoRegist.getText()));
-            miPersonalVo.setCelular(parseInt(txtCelularRegist.getText()));
-
-            //jDateChooser el nombre la variable  del componente jdatecgooser
-            try {
-
-                String formato = dateNacimientoRegist.getDateFormatString();
-                java.util.Date date = dateNacimientoRegist.getDate();
-                SimpleDateFormat sdf = new SimpleDateFormat(formato);
-                miPersonalVo.setFechaNacimiento(String.valueOf(sdf.format(date)));
-                setMiAdministradorVo(miCoordinador.getMiCorAdministradorVo());
-                if (miCoordinador.realizarRegistrarPersonal(miPersonalVo, miAdministradorVo.getIdAdmin(), txtFechaActualRegist.getText())) {
-                    JOptionPane.showMessageDialog(null, "Personal registrado exitosamente");
-                    limpiarCamposTextRegistro();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Verifique la informacion ingresada en los campos de texto");
-                }
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Ingrese una fecha valida, en formato yyyy-MM-dd");
-
-            }
-            JOptionPane.showMessageDialog(null, "Convertir " + miPersonalVo.getFechaNacimiento() + "id=" + miAdministradorVo.getIdAdmin());
-            //textFecha nombre de la variable del componenten jtextfiel
-
-        }
-    }//GEN-LAST:event_btnRegistrarPersonalActionPerformed
-
-    private void txIdPersonalConsultKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txIdPersonalConsultKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txIdPersonalConsultKeyPressed
-
-    private void btnEliminarEvaluConultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEvaluConultActionPerformed
-
-    }//GEN-LAST:event_btnEliminarEvaluConultActionPerformed
-
-    private void txtDuiRegistKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDuiRegistKeyTyped
-        validarCaracteresNumericos(evt);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDuiRegistKeyTyped
-
-    private void txtTelefonoRegistKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoRegistKeyTyped
-        validarCaracteresNumericos(evt);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonoRegistKeyTyped
-
-    private void txtCelularRegistKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCelularRegistKeyTyped
-        validarCaracteresNumericos(evt);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCelularRegistKeyTyped
-
-    private void txtCorreoRegistKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoRegistKeyTyped
-        validarCorreoCaracteres(txtCorreoRegist, evt);
-    }//GEN-LAST:event_txtCorreoRegistKeyTyped
-
-    private void txtFechaActualConsultKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFechaActualConsultKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaActualConsultKeyPressed
-
-    private void btnCancelRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelRegistActionPerformed
-        limpiarCamposTextRegistro();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelRegistActionPerformed
-
-    private void jTabbedPaneMenuPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneMenuPrincipalMouseClicked
-        mostrarPersonaTablaBusquedad();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTabbedPaneMenuPrincipalMouseClicked
-
-    private void txtNombreBusquedadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreBusquedadKeyPressed
-        miPersonalVo.setNombre(txtNombreBusquedad.getText());
-        miCoordinador.cargarBusquedaNombresPersonal(miPersonalVo, tablePersonalBusquedad);
-    }//GEN-LAST:event_txtNombreBusquedadKeyPressed
-
-    private void btnCancelarBusquedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarBusquedadActionPerformed
-        limpiarCamposTextBusquedad();
-        mostrarPersonaTablaBusquedad();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarBusquedadActionPerformed
-
-    private void txIdPersonalBusquedadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txIdPersonalBusquedadKeyTyped
-        validarCaracteresNumericos(evt);
-    }//GEN-LAST:event_txIdPersonalBusquedadKeyTyped
-
-    private void txIdPersonalBusquedadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txIdPersonalBusquedadKeyPressed
-        int code = evt.getKeyCode();
-        if (code == KeyEvent.VK_ENTER && !(txIdPersonalBusquedad.getText().isEmpty())) {
-            miPersonalVo.setIdPersonal(parseInt(txIdPersonalBusquedad.getText()));
-            if (!(miCoordinador.cargarBusquedaIdPersonal(miPersonalVo, tablePersonalBusquedad))) {
-                JOptionPane.showMessageDialog(null, "El  Nombre buscado no se encuentra: " + miPersonalVo.getIdPersonal());
-            }
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txIdPersonalBusquedadKeyPressed
-
-    private void txtCorreoModKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoModKeyTyped
-        validarCorreoCaracteres(txtCorreoMod, evt);
-    }//GEN-LAST:event_txtCorreoModKeyTyped
-
-    private void txtCelularModKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCelularModKeyTyped
-        validarCaracteresNumericos(evt);
-    }//GEN-LAST:event_txtCelularModKeyTyped
-
-    private void txtTelefonoModKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoModKeyTyped
-        validarCaracteresNumericos(evt);
-    }//GEN-LAST:event_txtTelefonoModKeyTyped
-
-    private void tablePersonalBusquedadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePersonalBusquedadMouseClicked
-        numFila = tablePersonalBusquedad.getSelectedRow();
-    }//GEN-LAST:event_tablePersonalBusquedadMouseClicked
-    public void validarCorreoCaracteres(JTextField campo, java.awt.event.KeyEvent evt) {
+    }    public void validarCorreoCaracteres(JTextField campo, java.awt.event.KeyEvent evt) {
         //Metdo para ecitar entra de caracteres no validos
         if (campo.getText().length() > 49) {
             evt.consume(); //hace que esa pulsación de tecla se rechace.
@@ -1032,14 +611,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel61;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuCerrar;
-    private javax.swing.JMenuItem jMenuItemCerrarSesion;
-    private javax.swing.JMenuItem jMenuItemSalirSistema;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JLabel jTNombreProveedor;
