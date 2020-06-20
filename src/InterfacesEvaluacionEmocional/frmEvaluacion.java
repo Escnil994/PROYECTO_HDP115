@@ -3,14 +3,16 @@ package InterfacesEvaluacionEmocional;
 
 import clasesEvaluacionEmocional.Preguntas;
 import clasesEvaluacionEmocional.Respuestas;
-import java.awt.Toolkit;
-import javax.swing.JOptionPane;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class frmEvaluacion extends javax.swing.JFrame {
 
 
     
         int posicion = 0;
+        int posicionaux;
         Respuestas r = new Respuestas();
         Preguntas p = new Preguntas();
         
@@ -248,36 +250,42 @@ public class frmEvaluacion extends javax.swing.JFrame {
              }
          }
          else if(posicion>=8 && posicion <=15){
-             if (claridadEmocional[posicion-8]==1){
+             
+             posicionaux=posicion-8;
+                     
+             if (claridadEmocional[posicionaux]==1){
                  opc1.setSelected(true);
              }
-             else if(claridadEmocional[posicion-8]==2){
+             else if(claridadEmocional[posicionaux]==2){
                  opc2.setSelected(true);
              }
-             else if(claridadEmocional[posicion-8]==3){
+             else if(claridadEmocional[posicionaux]==3){
                  opc3.setSelected(true);
              }
-             else if(claridadEmocional[posicion-8]==4){
+             else if(claridadEmocional[posicionaux]==4){
                  opc4.setSelected(true);
              }
-             else if(claridadEmocional[posicion-8]==5){
+             else if(claridadEmocional[posicionaux]==5){
                  opc5.setSelected(true);
              }
          }
          else if(posicion>=16 && posicion <=23){
-              if (reparacionEmociones[posicion-16]==1){
+             
+             posicionaux=posicion-16;
+             
+              if (reparacionEmociones[posicionaux]==1){
                  opc1.setSelected(true);
              }
-             else if(reparacionEmociones[posicion-16]==2){
+             else if(reparacionEmociones[posicionaux]==2){
                  opc2.setSelected(true);
              }
-             else if(reparacionEmociones[posicion-16]==3){
+             else if(reparacionEmociones[posicionaux]==3){
                  opc3.setSelected(true);
              }
-             else if(reparacionEmociones[posicion-16]==4){
+             else if(reparacionEmociones[posicionaux]==4){
                  opc4.setSelected(true);
              }
-             else if(reparacionEmociones[posicion-16]==5){
+             else if(reparacionEmociones[posicionaux]==5){
                  opc5.setSelected(true);
              }
          }
@@ -304,7 +312,8 @@ public class frmEvaluacion extends javax.swing.JFrame {
                     atencionEmocional[posicion]=1;
                 }
                 else if(posicion>=8 && posicion<=15){
-                    claridadEmocional[posicion-8]=1;
+                    posicionaux=posicion-8;
+                    claridadEmocional[posicionaux]=1;
                 }
                 else if(posicion>=16 && posicion<=23){
                     reparacionEmociones[posicion-16]=1;
@@ -422,22 +431,40 @@ public class frmEvaluacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAvanzarActionPerformed
 
     private void btnTerminarExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarExamenActionPerformed
-
-        int puntaje1=0;
-        int puntaje2=0;
-        int puntaje3=0;
         
-        int i=0;
-        while(i<8){
-            puntaje1=puntaje1+atencionEmocional[i];
-            puntaje2=+claridadEmocional[i];
-            puntaje3=+reparacionEmociones[i];
-        i++;
-    }
-        
-        frmResultados e = new frmResultados(puntaje1,puntaje2,puntaje3);
-        e.setVisible(true);
-        this.dispose();
+            try {
+                //Guardar ultimo registro
+                if(opc1.isSelected()){
+                    reparacionEmociones[7]=1;
+                }
+                else if(opc2.isSelected()){
+                    reparacionEmociones[7]=2;
+                }
+                else if(opc3.isSelected()){
+                    reparacionEmociones[7]=3;
+                }
+                else if(opc4.isSelected()){
+                    reparacionEmociones[7]=4;
+                }
+                else if(opc5.isSelected()){
+                    reparacionEmociones[7]=5;
+                }
+                
+                //Calculamod puntajes
+                int puntaje1= atencionEmocional[0]+atencionEmocional[1]+atencionEmocional[2]+atencionEmocional[3]+atencionEmocional[4]
+                        +atencionEmocional[5]+atencionEmocional[6]+atencionEmocional[7];
+                int puntaje2=claridadEmocional[0]+claridadEmocional[1]+claridadEmocional[2]+claridadEmocional[3]+claridadEmocional[4]+
+                        claridadEmocional[5]+claridadEmocional[6]+claridadEmocional[7];
+                int puntaje3=reparacionEmociones[0]+reparacionEmociones[1]+reparacionEmociones[2]+reparacionEmociones[3]+
+                        reparacionEmociones[4]+reparacionEmociones[5]+reparacionEmociones[6]+reparacionEmociones[7];
+                
+                frmResultados e;
+                e = new frmResultados(puntaje1,puntaje2,puntaje3);
+                e.setVisible(true);
+                this.dispose();
+            } catch (SQLException ex) {
+                Logger.getLogger(frmEvaluacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
     }//GEN-LAST:event_btnTerminarExamenActionPerformed
 
