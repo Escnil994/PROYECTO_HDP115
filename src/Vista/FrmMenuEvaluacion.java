@@ -9,6 +9,7 @@ import Controlador.Coordinador;
 import java.awt.Image;
 import java.awt.Toolkit;
 import Vista.*;
+import InterfacesEvaluacionEmocional.frmIndicacionesEvaluacionEmocional;
 
 /**
  *
@@ -137,7 +138,7 @@ public class FrmMenuEvaluacion extends javax.swing.JFrame {
         jPanel4.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 530, 160, 40));
 
         btnRealizarEmocionalEval.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnRealizarEmocionalEval.setText("Realizar evaluación de inteligencia emocionalç");
+        btnRealizarEmocionalEval.setText("Realizar evaluación de inteligencia emocional");
         btnRealizarEmocionalEval.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRealizarEmocionalEvalActionPerformed(evt);
@@ -200,7 +201,8 @@ public class FrmMenuEvaluacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIngresarAdmiLogin2ActionPerformed
 
     private void btnRealizarEmocionalEvalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarEmocionalEvalActionPerformed
-        // TODO add your handling code here:
+        frmIndicacionesEvaluacionEmocional e = new frmIndicacionesEvaluacionEmocional();
+        e.setVisible(true);      // TODO add your handling code here:
     }//GEN-LAST:event_btnRealizarEmocionalEvalActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
